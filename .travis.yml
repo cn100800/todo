@@ -1,0 +1,21 @@
+language: go
+before_install:
+- openssl aes-256-cbc -K $encrypted_45a88a350c7e_key -iv $encrypted_45a88a350c7e_iv
+  -in cn.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+install: true
+script: true
+addons:
+  ssh_known_hosts:
+    - $HOST
+after_success:
+- rsync -av -e "ssh -o StrictHostKeyChecking=no" --exclude=.git . home@$HOST:/home/home/test
+notifications:
+  email:
+    recipients:
+    - cn100800@163.com
+    on_success: always
+    on_failure: always
+env:
+  global:
+    secure: FbByD85suhuz+wDvnsVkAQUDp+ol6jlM9YQPiedka9XLE66G3rR1NHysPaDMyDkufJ+nKkDT4aIFTvQ35QLj+Jmx/i44yr/HnT65FjiaaMKEhnVrYx5ktCiYlhEHdl6FgyhJinM2ZLxhABiQ67H8/9hx8wzv8WUJIGBoAeseUXR4xneMZaziXErAVeieNoVzx9zKyD87V5LWc6ZMw50f8nS++YOck7lLmQ2ISLpUUrayKYCD/vnHcM8NUFw7r0FfmtVjKzJf/augnNZ3lu+5WIMQTqRSXzM6djfw0AmZnOUEVo7yOdrkbSFBtNjimRRiuDsCpBzBZzOQ/vOMOLcwLimLRJZI+0RcC4T24MIllcHltf+pbCbgNrZcNpwkhijABJ8NgC2oi6ypzx3JwsTtG+pW9/XN9ALrMQS9cDYxXVoHtS36eYn57XMIvGg1q++s5tWpq5b5EXnhcF/6TSEene3GV7FzHe6BvloFR8h7RYjraEclUM4xpNVom5grD5nc8vO5OGHebMMokwLJ/8AYiidO6ZtiH+VHIFID63QozJXzJ/9A3OhsxmgFQ2rP7SD4Je7162LFum0+o2HZspYt4k/Veg9h8tj3poy4dnhZwu/iJSFHypaPEad/SrHVX1tCcPyagdFwFBkGss8jFh6ABo870C/aP/tIN7PuwcK0sKY=
