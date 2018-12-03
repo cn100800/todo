@@ -1,4 +1,5 @@
 #!/bin/bash
 output/
+release/
 vendor/
 go.sum
