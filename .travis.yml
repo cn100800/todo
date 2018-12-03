@@ -8,6 +8,7 @@ script: make build
 addons:
   ssh_known_hosts:
   - "$HOST"
+
 after_success:
 - rsync -av -e "ssh -o StrictHostKeyChecking=no" --exclude=.git . home@$HOST:/home/home/test
 notifications:
@@ -29,3 +30,4 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+

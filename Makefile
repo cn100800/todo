@@ -17,3 +17,4 @@ build:
 	tar -cvzf $(RELEASE_DIR)/$(VERSION).tar.gz -C $(BUILD_DIR)/$(DARWIN) .
 	tar -cvzf $(RELEASE_DIR)/$(VERSION).tar.xz -C $(BUILD_DIR)/$(LINUX) .
 	@echo "release success!"
+
