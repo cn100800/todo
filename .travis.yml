@@ -1,4 +1,6 @@
 language: go
+go:
+- '1.11'
 before_install:
 - openssl aes-256-cbc -K $encrypted_45a88a350c7e_key -iv $encrypted_45a88a350c7e_iv
   -in cn.enc -out ~/.ssh/id_rsa -d
