@@ -5,6 +5,7 @@ INSTALL_DIR = /usr/local/bin
 DARWIN = darwin
 LINUX = linux
 VERSION = `git tag |sort -Vr |head -1`
+export GO111MODULE=on
 
 build:
 	go mod vendor
