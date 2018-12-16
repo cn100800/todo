@@ -4,13 +4,15 @@ before_install:
   -in cn.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 install: true
+before_script: export GO111MODULE=on
 script: make build
 addons:
   ssh_known_hosts:
   - "$HOST"
 
 after_success:
-- rsync -av -e "ssh -o StrictHostKeyChecking=no" --exclude=.git . home@$HOST:/home/home/test
+  #- rsync -av -e "ssh -o StrictHostKeyChecking=no" --exclude=.git . home@$HOST:/home/home/test
+  - rsync -av -e "ssh -o StrictHostKeyChecking=no" output/linux/* home@$HOST:/home/home/test
 notifications:
   email:
     recipients:
