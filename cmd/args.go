@@ -7,34 +7,30 @@ import (
 )
 
 func init() {
-	switch os.Args[1] {
-	case "add":
-		addTask(os.Args[2])
-		return
-	case "start":
-		log.Println("start")
-		return
-	case "stop":
-		log.Println("stop")
-		return
-	case "delete":
-		log.Println("remove")
-		return
-	case "list":
-		log.Println("list")
-		return
-	case "all":
-		log.Println("all")
-		return
-	case "help":
+	if len(os.Args) > 1 {
+		switch os.Args[1] {
+		case "add":
+			addTask(os.Args[2])
+		case "start":
+			log.Println("start")
+		case "stop":
+			log.Println("stop")
+		case "delete":
+			log.Println("remove")
+		case "list":
+			log.Println("list")
+		case "all":
+			log.Println("all")
+		default:
+			help()
+		}
+	} else {
 		help()
-		return
 	}
 }
 
 func help() {
-	s := `
-todo is a gdt tool.
+	s := `todo is a gdt tool.
 
 Usage:
 

@@ -1,12 +1,14 @@
 package cmd
 
 import (
+	"encoding/json"
 	"os"
 
+	"github.com/cn100800/todo/task"
 	"github.com/satori/go.uuid"
 )
 
-func AppendData(s string) error {
+func AppendData(p string) error {
 	os.Chdir(workDir)
 	f, err := os.OpenFile(pendFile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	defer f.Close()
@@ -14,11 +16,17 @@ func AppendData(s string) error {
 		return err
 	}
 	u := uuid.NewV4().String()
+	task := task.Task{}
+	task.Uuid = u
+	task.Project = p
+	task.Status = "pending"
+	t, err := json.Marshal(task)
 	if err != nil {
 		return err
 	}
-	if _, err := f.Write([]byte(s + " " + u + "\n")); err != nil {
+	if _, err := f.WriteString(string(t) + "\n"); err != nil {
 		return err
 	}
+	os.Stdout.WriteString("add new task success \n")
 	return nil
 }
