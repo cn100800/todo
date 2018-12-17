@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"log"
 	"os"
 )
 
@@ -9,21 +8,17 @@ const (
 	FILE_DIR = ".gotask"
 )
 
-func MakeDataDir() {
+var (
+	workDir  = os.Getenv("HOME") + string(os.PathSeparator) + FILE_DIR
+	pendFile = "pending.data"
+)
 
-	if err := createFile(); err != nil {
-		log.Fatal(err)
+func init() {
+	if _, err := os.Stat(workDir); err != nil {
+		os.Mkdir(workDir, os.ModePerm)
 	}
-}
-
-func createFile() error {
-	f := os.Getenv("HOME") + string(os.PathSeparator) + FILE_DIR
-	_, err := os.Stat(f)
-	if !os.IsNotExist(err) {
-		return nil
+	os.Chdir(workDir)
+	if _, err := os.Stat(pendFile); os.IsNotExist(err) {
+		os.Create(pendFile)
 	}
-	if err := os.Mkdir(f, os.ModePerm); err != nil {
-		return err
-	}
-	return nil
 }
