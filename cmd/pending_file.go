@@ -3,6 +3,7 @@ package cmd
 import (
 	"encoding/json"
 	"os"
+	"time"
 
 	"github.com/cn100800/todo/task"
 	"github.com/satori/go.uuid"
@@ -20,6 +21,7 @@ func AppendData(p string) error {
 	task.Uuid = u
 	task.Project = p
 	task.Status = "pending"
+	task.Entry = time.Now().Format(time.RFC3339)
 	t, err := json.Marshal(task)
 	if err != nil {
 		return err

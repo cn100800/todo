@@ -18,7 +18,7 @@ func init() {
 		case "delete":
 			log.Println("remove")
 		case "list":
-			log.Println("list")
+			listTask()
 		case "all":
 			log.Println("all")
 		default:
