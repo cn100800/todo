@@ -11,6 +11,7 @@ const (
 var (
 	workDir  = os.Getenv("HOME") + string(os.PathSeparator) + FILE_DIR
 	pendFile = "pending.data"
+	doneFile = "completed.data"
 )
 
 func init() {

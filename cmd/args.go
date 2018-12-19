@@ -16,7 +16,7 @@ func init() {
 		case "stop":
 			log.Println("stop")
 		case "delete":
-			log.Println("remove")
+			deleteTask(os.Args[2])
 		case "list":
 			listTask()
 		case "all":
@@ -39,10 +39,10 @@ Usage:
 The commands are:
 
 	add       Adds a new task
-	start     Marks specified task as started
-	stop      Removes the 'start' time from a task
 	delete    Deletes the specified task
 	list      Most details of tasks
+	start     Marks specified task as started
+	stop      Removes the 'start' time from a task
 	all       All tasks
 
 
