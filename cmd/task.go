@@ -33,7 +33,7 @@ func deleteTask(u string) error {
 		if err := json.Unmarshal(scanner.Bytes(), &t); err != nil {
 			return err
 		}
-		if t.Uuid == u {
+		if t.Uuid[0:8] == u {
 			wd.WriteString(scanner.Text() + "\n")
 			continue
 		}
@@ -57,13 +57,13 @@ func listTask() error {
 	var t task.Task
 	table := uitable.New()
 	table.MaxColWidth = 50
-	table.AddRow("id", "project", "status")
+	table.AddRow("id", "project", "uuid")
 	//var list []task.Task
 	for scanner.Scan() {
 		if err := json.Unmarshal([]byte(scanner.Text()), &t); err != nil {
 			return err
 		}
-		table.AddRow(t.Id, t.Project, t.Status)
+		table.AddRow(t.Id, t.Project, t.Uuid[0:8])
 	}
 	fmt.Println(table)
 	return nil
