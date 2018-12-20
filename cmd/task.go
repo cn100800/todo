@@ -3,10 +3,11 @@ package cmd
 import (
 	"bufio"
 	"encoding/json"
+	"fmt"
 	"os"
 
+	"github.com/Gosuri/uitable"
 	"github.com/cn100800/todo/task"
-	"github.com/modood/table"
 )
 
 func addTask(s string) error {
@@ -19,18 +20,21 @@ func addTask(s string) error {
 func deleteTask(u string) error {
 	os.Chdir(workDir)
 	f, err := os.OpenFile(pendFile, os.O_CREATE|os.O_RDWR, 0644)
+	fd, err := os.OpenFile(doneFile, os.O_CREATE|os.O_RDWR, 0644)
 	if err != nil {
 		return err
 	}
 	scanner := bufio.NewScanner(f)
 	var t task.Task
 	w := bufio.NewWriter(f)
+	wd := bufio.NewWriter(fd)
 	i := 0
 	for scanner.Scan() {
 		if err := json.Unmarshal(scanner.Bytes(), &t); err != nil {
 			return err
 		}
 		if t.Uuid == u {
+			wd.WriteString(scanner.Text() + "\n")
 			continue
 		}
 		i += len(scanner.Bytes())
@@ -39,6 +43,7 @@ func deleteTask(u string) error {
 	f.Truncate(0)
 	f.Seek(0, 0)
 	w.Flush()
+	wd.Flush()
 	return nil
 }
 
@@ -50,13 +55,16 @@ func listTask() error {
 	}
 	scanner := bufio.NewScanner(f)
 	var t task.Task
-	var list []task.Task
+	table := uitable.New()
+	table.MaxColWidth = 50
+	table.AddRow("id", "project", "status")
+	//var list []task.Task
 	for scanner.Scan() {
 		if err := json.Unmarshal([]byte(scanner.Text()), &t); err != nil {
 			return err
 		}
-		list = append(list, t)
+		table.AddRow(t.Id, t.Project, t.Status)
 	}
-	table.Output(list)
+	fmt.Println(table)
 	return nil
 }
