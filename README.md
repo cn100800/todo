@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/cn100800/todo.svg?branch=master)](https://travis-ci.org/cn100800/todo)
 
+![image-20181221220858817](https://ws2.sinaimg.cn/large/006tNbRwly1fyepzkcv0oj30rq0gejt4.jpg)
+
 ### 听说你想请我喝下午茶？😏
 
 <!--![Wechat](Wechat.jpeg)-->
