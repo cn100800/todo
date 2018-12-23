@@ -28,12 +28,12 @@ func allTask() error {
 	table := uitable.New()
 	table.MaxColWidth = 50
 	table.AddRow("")
-	table.AddRow("", "id", "project", "uuid")
+	table.AddRow("", "\033[4mID", "\033[0m \033[4mProject", "\033[0m \033[4mUUID\033[0m")
 	for scanner.Scan() {
 		if err := json.Unmarshal(scanner.Bytes(), &t); err != nil {
 			return err
 		}
-		table.AddRow("", t.Id, t.Project, t.Uuid[0:8])
+		table.AddRow("", t.Id, " "+t.Project, " "+t.Uuid[0:8])
 	}
 	table.AddRow("")
 	fmt.Println(table)
