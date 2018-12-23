@@ -1,6 +1,16 @@
-# todo
+## todo
 
 [![Build Status](https://travis-ci.org/cn100800/todo.svg?branch=master)](https://travis-ci.org/cn100800/todo)
+
+### 安装
+
+[下载页面](https://github.com/cn100800/todo/releases)
+
+    mac下载zip文件解压
+
+    linux下载tar.gz文件解压
+
+### 使用帮助
 
 ![image-20181221220858817](https://ws2.sinaimg.cn/large/006tNbRwly1fyepzkcv0oj30rq0gejt4.jpg)
 

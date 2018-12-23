@@ -49,7 +49,6 @@ The commands are:
 	stop      Removes the 'start' time from a task
 	all       All tasks
 
-
 Use "todo help <command>" for more information about a command.
 
 Version:
