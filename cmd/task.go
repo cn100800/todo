@@ -17,10 +17,31 @@ func addTask(s string) error {
 	return nil
 }
 
+func allTask() error {
+	os.Chdir(workDir)
+	f, err := os.Open(doneFile)
+	if err != nil {
+		return err
+	}
+	scanner := bufio.NewScanner(f)
+	var t task.Task
+	table := uitable.New()
+	table.MaxColWidth = 50
+	table.AddRow("id", "project", "uuid")
+	for scanner.Scan() {
+		if err := json.Unmarshal(scanner.Bytes(), &t); err != nil {
+			return err
+		}
+		table.AddRow(t.Id, t.Project, t.Uuid[0:8])
+	}
+	fmt.Println(table)
+	return nil
+}
+
 func deleteTask(u string) error {
 	os.Chdir(workDir)
 	f, err := os.OpenFile(pendFile, os.O_CREATE|os.O_RDWR, 0644)
-	fd, err := os.OpenFile(doneFile, os.O_CREATE|os.O_RDWR, 0644)
+	fd, err := os.OpenFile(doneFile, os.O_CREATE|os.O_RDWR|os.O_APPEND, 0644)
 	if err != nil {
 		return err
 	}

@@ -22,7 +22,7 @@ func init() {
 		case "list":
 			listTask()
 		case "all":
-			log.Println("all")
+			allTask()
 		case "version":
 			io.WriteString(os.Stdout, version+"\n")
 		default:
