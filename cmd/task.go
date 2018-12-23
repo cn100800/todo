@@ -27,13 +27,15 @@ func allTask() error {
 	var t task.Task
 	table := uitable.New()
 	table.MaxColWidth = 50
-	table.AddRow("id", "project", "uuid")
+	table.AddRow("")
+	table.AddRow("", "id", "project", "uuid")
 	for scanner.Scan() {
 		if err := json.Unmarshal(scanner.Bytes(), &t); err != nil {
 			return err
 		}
-		table.AddRow(t.Id, t.Project, t.Uuid[0:8])
+		table.AddRow("", t.Id, t.Project, t.Uuid[0:8])
 	}
+	table.AddRow("")
 	fmt.Println(table)
 	return nil
 }
@@ -78,14 +80,16 @@ func listTask() error {
 	var t task.Task
 	table := uitable.New()
 	table.MaxColWidth = 50
-	table.AddRow("id", "project", "uuid")
+	table.AddRow("")
+	table.AddRow("", "\033[4mID", "\033[0m \033[4mProject", "\033[0m \033[4mUUID\033[0m")
 	//var list []task.Task
 	for scanner.Scan() {
 		if err := json.Unmarshal([]byte(scanner.Text()), &t); err != nil {
 			return err
 		}
-		table.AddRow(t.Id, t.Project, t.Uuid[0:8])
+		table.AddRow("", t.Id, " "+t.Project, " "+t.Uuid[0:8])
 	}
+	table.AddRow("")
 	fmt.Println(table)
 	return nil
 }
