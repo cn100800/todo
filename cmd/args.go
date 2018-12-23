@@ -6,6 +6,8 @@ import (
 	"os"
 )
 
+var version string
+
 func init() {
 	if len(os.Args) > 1 {
 		switch os.Args[1] {
@@ -21,6 +23,8 @@ func init() {
 			listTask()
 		case "all":
 			log.Println("all")
+		case "version":
+			io.WriteString(os.Stdout, version+"\n")
 		default:
 			help()
 		}
@@ -47,6 +51,9 @@ The commands are:
 
 
 Use "todo help <command>" for more information about a command.
+
+Version:
+	` + version + `
 
 `
 	io.WriteString(os.Stdout, s)
