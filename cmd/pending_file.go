@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"bufio"
 	"encoding/json"
 	"os"
 	"time"
@@ -17,12 +18,17 @@ func AppendData(p string) error {
 		return err
 	}
 	u := uuid.NewV4().String()
-	task := task.Task{}
-	task.Uuid = u
-	task.Project = p
-	task.Status = "pending"
-	task.Entry = time.Now().Format(time.RFC3339)
-	t, err := json.Marshal(task)
+	l := task.Task{}
+	id, err := getId()
+	if err != nil {
+		return err
+	}
+	l.Id = id
+	l.Uuid = u
+	l.Project = p
+	l.Status = "pending"
+	l.Entry = time.Now().Format(time.RFC3339)
+	t, err := json.Marshal(l)
 	if err != nil {
 		return err
 	}
@@ -31,4 +37,26 @@ func AppendData(p string) error {
 	}
 	os.Stdout.WriteString("add new task success \n")
 	return nil
+}
+
+func getId() (int, error) {
+	os.Chdir(workDir)
+	f, err := os.Open(pendFile)
+	if err != nil {
+		return 0, err
+	}
+	i := 0
+	scanner := bufio.NewScanner(f)
+	var t task.Task
+	for scanner.Scan() {
+		i++
+		if err := json.Unmarshal([]byte(scanner.Text()), &t); err != nil {
+			return 0, err
+		}
+		if t.Id != i {
+			return i, nil
+		}
+	}
+	i++
+	return i, nil
 }
