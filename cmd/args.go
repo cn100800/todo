@@ -23,6 +23,15 @@ func init() {
 			listTask()
 		case "all":
 			allTask()
+		case "url":
+			switch os.Args[2] {
+			case "add":
+				addUrl(os.Args[3], os.Args[4])
+			case "remove":
+				log.Println("url remove")
+			case "info":
+				log.Println("url info")
+			}
 		case "version":
 			io.WriteString(os.Stdout, version+"\n")
 		default:

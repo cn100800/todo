@@ -12,6 +12,7 @@ var (
 	workDir  = os.Getenv("HOME") + string(os.PathSeparator) + FILE_DIR
 	pendFile = "pending.data"
 	doneFile = "completed.data"
+	urlFile  = "url.data"
 )
 
 func init() {

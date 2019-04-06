@@ -1,16 +1,22 @@
 ## todo
 
-[![Build Status](https://travis-ci.org/cn100800/todo.svg?branch=master)](https://travis-ci.org/cn100800/todo)
+[![Badge](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu/#/zh_CN)  [![Build Status](https://travis-ci.org/cn100800/todo.svg?branch=master)](https://travis-ci.org/cn100800/todo)
 
-### 安装
+# 简介
+
+项目初衷,日常工作中我们会被很多琐碎工作左右着每天的生活,一个好的GDT工具将是我们高效的管理工作中的问题,包括工作安排,工作进度,工作报告,本工具就诞生了.
+
+该项目初衷为程序员提供,需求管理,进度管理,文档管理,周报总结等一体化解决方案.
+
+### 快速安装
 
 [下载页面](https://github.com/cn100800/todo/releases)
 
     mac下载zip文件解压
-
+    
     linux下载tar.gz文件解压
 
-### 使用帮助
+### 使用文档
 
 ![image-20181221220858817](https://ws2.sinaimg.cn/large/006tNbRwly1fyepzkcv0oj30rq0gejt4.jpg)
 
