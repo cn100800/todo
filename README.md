@@ -20,10 +20,14 @@
 
 ![image-20181221220858817](https://ws2.sinaimg.cn/large/006tNbRwly1fyepzkcv0oj30rq0gejt4.jpg)
 
+# 更新日志
+
+
+
 ### 听说你想请我喝下午茶？😏
 
 <!--![Wechat](Wechat.jpeg)-->
-<div><img width="250" height="250" src="https://raw.githubusercontent.com/cn100800/homebrew-app/master/wechat-emoji.png"/></div>
+<div><img width="250" height="250" src="https://ws2.sinaimg.cn/large/006tNc79ly1g2mqq0ocvpj30lk0kywlq.jpg"/></div>
 
 <!-- before_install
 install
