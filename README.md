@@ -20,6 +20,10 @@
 
 ![image-20181221220858817](https://ws2.sinaimg.cn/large/006tNbRwly1fyepzkcv0oj30rq0gejt4.jpg)
 
+# todo list 
+- [ ] 实现基本功能
+- [ ] 登录gproject实现本地和远程同步模式  
+
 # 更新日志
 
 
