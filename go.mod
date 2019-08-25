@@ -1,10 +1,10 @@
-module github.com/cn100800/todo
+module github.com/freecracy/todo
 
 require (
 	github.com/Gosuri/uitable v0.0.0-20160404203958-36ee7e946282
-	github.com/gosuri/uitable v0.0.0-20160404203958-36ee7e946282 // indirect
-	github.com/mattn/go-runewidth v0.0.4 // indirect
-	github.com/modood/table v0.0.0-20181112072225-499dc7fba710 // indirect
-	github.com/op/go-logging v0.0.0-20160315200505-970db520ece7 // indirect
+	github.com/cn100800/todo v0.0.0-20190503033112-c0488f45c50f
+	github.com/mitchellh/go-homedir v1.1.0
 	github.com/satori/go.uuid v1.2.0
+	github.com/spf13/cobra v0.0.5
+	github.com/spf13/viper v1.4.0
 )

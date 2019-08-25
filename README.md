@@ -10,7 +10,7 @@
 
 ### 快速安装
 
-[下载页面](https://github.com/cn100800/todo/releases)
+[下载页面](https://github.com/freecracy/todo/releases)
 
     mac下载zip文件解压
     

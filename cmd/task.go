@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/Gosuri/uitable"
-	"github.com/cn100800/todo/task"
+	"github.com/freecracy/todo/task"
 )
 
 func addTask(s string) error {

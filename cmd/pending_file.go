@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/cn100800/todo/task"
+	"github.com/freecracy/todo/task"
 	"github.com/satori/go.uuid"
 )
 

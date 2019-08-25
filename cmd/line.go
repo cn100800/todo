@@ -1,6 +1,6 @@
 package cmd
 
-import "github.com/cn100800/todo/task"
+import "github.com/freecracy/todo/task"
 
 func getLine(l string) task.Task {
 	t := task.Task{}
