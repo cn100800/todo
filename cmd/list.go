@@ -34,6 +34,7 @@ var listCmd = &cobra.Command{
 	Long:  `A longer description application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("list called")
+                listTask()
 	},
 }
 

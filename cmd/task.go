@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Gosuri/uitable"
+	"github.com/gosuri/uitable"
 	"github.com/freecracy/todo/task"
 )
 

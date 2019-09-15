@@ -14,9 +14,9 @@ func addUrl(id string, url string) error {
 		return nil
 	}
 	//fmt.Println(f.Stat())
-	a, _ := f.Stat()
+	//a, _ := f.Stat()
 
-	fmt.Println(f.Read([a.Size()]byte))
+       	//fmt.Println(f.Read([a.Size()]byte))
 	return nil
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
