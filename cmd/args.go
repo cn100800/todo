@@ -60,6 +60,9 @@ The commands are:
 
 Use "todo help <command>" for more information about a command.
 
+工作原因,有想法无实现,轻喷
+https://github.com/freecracy/todo/issues
+
 Version:
 	` + version + `
 
