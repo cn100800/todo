@@ -22,9 +22,8 @@ THE SOFTWARE.
 package main
 
 import (
-  "github.com/freecracy/todo/cmd"
+	"github.com/freecracy/todo/cmd"
 )
-
 
 func main() {
 	cmd.Execute()

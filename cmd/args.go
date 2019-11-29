@@ -14,6 +14,7 @@ func init() {
 		case "add":
 			addTask(os.Args[2])
 		case "start":
+
 			log.Println("start")
 		case "stop":
 			log.Println("stop")

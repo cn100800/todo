@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/freecracy/todo/task"
-	"github.com/satori/go.uuid"
 )
 
 func AppendData(p string) error {

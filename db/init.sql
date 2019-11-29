@@ -1,4 +1,4 @@
-create table todo (
+create table IF NOT EXISTS todo (
    id integer  PRIMARY KEY ,
    title varchar(50),
    content text,
