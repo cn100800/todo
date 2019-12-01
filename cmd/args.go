@@ -8,7 +8,7 @@ import (
 
 var version string
 
-func init() {
+func main_init() {
 	if len(os.Args) > 1 {
 		switch os.Args[1] {
 		case "add":
@@ -61,7 +61,7 @@ The commands are:
 
 Use "todo help <command>" for more information about a command.
 
-工作原因,有想法无实现,轻喷
+工作原因,有想法无实现,轻喷1
 https://github.com/freecracy/todo/issues
 
 Version:

@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/freecracy/todo/task"
+	"github.com/google/uuid"
 )
 
 func AppendData(p string) error {
@@ -16,7 +17,8 @@ func AppendData(p string) error {
 	if err != nil {
 		return err
 	}
-	u := uuid.NewV4().String()
+	u1, _ := uuid.NewUUID()
+	u := u1.String()
 	l := task.Task{}
 	id, err := getId()
 	if err != nil {
