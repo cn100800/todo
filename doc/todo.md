@@ -1,5 +1,6 @@
 ## todo
 
+todo init
 todo add
 todo list
 todo all
