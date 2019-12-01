@@ -1,8 +1,6 @@
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/freecracy/todo/task"
 	"github.com/spf13/cobra"
 )
@@ -13,7 +11,6 @@ var initCmd = &cobra.Command{
 	Short: "A brief description of your command",
 	Long:  `todo初始化`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("init called")
 		task.TodoInit()
 	},
 }

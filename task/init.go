@@ -1,9 +1,12 @@
 package task
 
 import (
+	"database/sql"
 	"log"
 	"os"
 	"path/filepath"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
 var (
@@ -11,8 +14,13 @@ var (
 	dataFile = "data"
 )
 
+const (
+	MessageSuccess = "init success !"
+)
+
 func TodoInit() {
 	initBaseDir()
+	initDB()
 }
 
 func initBaseDir() {
@@ -27,4 +35,32 @@ func initBaseDir() {
 	}
 	os.Chmod(configDir, 0744)
 	os.Chmod(dbFile, 0644)
+}
+
+func initDB() {
+	homeDir, _ := os.UserHomeDir()
+	configDir := filepath.Join(homeDir, baseDir)
+	dbFile := configDir + string(os.PathSeparator) + dataFile
+	db, err := sql.Open("sqlite3", dbFile)
+	if err != nil || db == nil {
+		log.Println(err.Error())
+	}
+	sql := `
+		create table IF NOT EXISTS todo (
+			id integer  PRIMARY KEY ,
+			title varchar(50),
+			content text,
+			step text,
+			url text,
+			branch varchar(50),
+			start_time integer,
+			end_time integer,
+			create_time integer,
+			update_time integer
+		);
+   `
+	if _, err := db.Exec(sql); err != nil {
+		log.Println(err.Error())
+	}
+	Success(MessageSuccess)
 }
