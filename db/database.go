@@ -89,6 +89,22 @@ func Insert(table string, m map[string]string) {
 	if _, err := db.Exec(q); err != nil {
 		log.Println(err.Error())
 	}
+}
+
+func Select(table string) {
+	if len(table) == 0 {
+		table = "todo"
+	}
+	q := "select * from todo"
+	db, err := sql.Open("sqlite3", GetDBFile())
+	if err != nil || db == nil {
+		log.Println(err.Error())
+	}
+	result, err := db.Exec(q)
+	if err != nil {
+		log.Println(err.Error())
+	}
+	fmt.Println(&result)
 
 }
 

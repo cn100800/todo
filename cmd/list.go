@@ -1,8 +1,7 @@
 package cmd
 
 import (
-	"fmt"
-
+	"github.com/freecracy/todo/task"
 	"github.com/spf13/cobra"
 )
 
@@ -12,8 +11,7 @@ var listCmd = &cobra.Command{
 	Short: "A brief description of your command",
 	Long:  `A longer description application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("list called")
-		listTask()
+		task.ListTask()
 	},
 }
 
