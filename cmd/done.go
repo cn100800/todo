@@ -1,8 +1,7 @@
 package cmd
 
 import (
-	"fmt"
-
+	"github.com/freecracy/todo/task"
 	"github.com/spf13/cobra"
 )
 
@@ -12,7 +11,7 @@ var doneCmd = &cobra.Command{
 	Short: "A brief description of your command",
 	Long:  `完成状态`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("done called")
+		task.Done(args[0])
 	},
 }
 

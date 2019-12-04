@@ -9,8 +9,9 @@ func AddTask(args []string) (bool, error) {
 	UUID, _ := uuid.NewUUID()
 
 	var i = map[string]string{
-		"id":    UUID.String(),
-		"title": args[0],
+		"short_id": UUID.String()[:8],
+		"uuid":     UUID.String(),
+		"title":    args[0],
 	}
 	db.Insert("todo", i)
 	Success("add success!")

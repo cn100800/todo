@@ -54,7 +54,9 @@ func initDB() {
 	}
 	sql := `
 		create table IF NOT EXISTS todo (
-			id string  PRIMARY KEY ,
+			id integer PRIMARY KEY autoincrement,
+			short_id string ,
+			uuid string,
 			title varchar(50),
 			content text,
 			step text,
@@ -62,6 +64,7 @@ func initDB() {
 			branch varchar(50),
 			start_time integer,
 			end_time integer,
+			status integer,
 			create_time integer,
 			update_time integer
 		);

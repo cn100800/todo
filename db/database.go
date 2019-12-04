@@ -97,7 +97,7 @@ func Select(table string) [][]string {
 	if len(table) == 0 {
 		table = "todo"
 	}
-	q := "select id,title from todo"
+	q := "select short_id,title from todo"
 	db, err := sql.Open("sqlite3", GetDBFile())
 	if err != nil || db == nil {
 		log.Println(err.Error())
@@ -112,6 +112,30 @@ func Select(table string) [][]string {
 	}
 	rows.Close()
 	return a
+}
+
+func Update(table, id string) (bool, error) {
+	db, err := sql.Open("sqlite3", GetDBFile())
+	if err != nil || db == nil {
+		log.Println(err.Error())
+	}
+	q := "update todo set where "
+	if _, err := db.Exec(q); err != nil {
+		log.Println(err.Error())
+	}
+	return true, nil
+}
+
+func Delete() (bool, error) {
+	db, err := sql.Open("sqlite3", GetDBFile())
+	if err != nil || db == nil {
+		log.Println(err.Error())
+	}
+	q := "delete from todo "
+	if _, err := db.Exec(q); err != nil {
+		log.Println(err.Error())
+	}
+	return true, nil
 }
 
 func GetDBFile() string {
