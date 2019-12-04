@@ -4,10 +4,10 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"os"
+	"path/filepath"
 	"strings"
 	"sync"
-
-	"github.com/freecracy/todo/task"
 )
 
 type dbcon struct {
@@ -28,7 +28,7 @@ var (
 func DB() *dbcon {
 	if instance == nil {
 		onece.Do(func() {
-			db, err := sql.Open("sqlite3", task.GetDBFile())
+			db, err := sql.Open("sqlite3", GetDBFile())
 			if err != nil || db == nil {
 				log.Println(err.Error())
 			}
@@ -42,6 +42,11 @@ func DB() *dbcon {
 var (
 	one         sync.Once
 	instanceOne *dbcon
+)
+
+var (
+	baseDir  = filepath.Join(".config", "todo")
+	dataFile = "data"
 )
 
 func getInstance() *dbcon {
@@ -77,5 +82,19 @@ func Insert(table string, m map[string]string) {
 		v = append(v, value)
 	}
 	q := fmt.Sprintf("insert into %s (%s) values ('%s') ", table, strings.Join(n, string(",")), strings.Join(v, string("','")))
-	log.Println(q)
+	db, err := sql.Open("sqlite3", GetDBFile())
+	if err != nil || db == nil {
+		log.Println(err.Error())
+	}
+	if _, err := db.Exec(q); err != nil {
+		log.Println(err.Error())
+	}
+
+}
+
+func GetDBFile() string {
+	homeDir, _ := os.UserHomeDir()
+	configDir := filepath.Join(homeDir, baseDir)
+	dbFile := configDir + string(os.PathSeparator) + dataFile
+	return dbFile
 }

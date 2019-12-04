@@ -54,7 +54,7 @@ func initDB() {
 	}
 	sql := `
 		create table IF NOT EXISTS todo (
-			id integer  PRIMARY KEY ,
+			id string  PRIMARY KEY ,
 			title varchar(50),
 			content text,
 			step text,
