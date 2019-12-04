@@ -8,6 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 	"sync"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
 type dbcon struct {
@@ -91,21 +93,25 @@ func Insert(table string, m map[string]string) {
 	}
 }
 
-func Select(table string) {
+func Select(table string) [][]string {
 	if len(table) == 0 {
 		table = "todo"
 	}
-	q := "select * from todo"
+	q := "select id,title from todo"
 	db, err := sql.Open("sqlite3", GetDBFile())
 	if err != nil || db == nil {
 		log.Println(err.Error())
 	}
-	result, err := db.Exec(q)
-	if err != nil {
-		log.Println(err.Error())
+	var a [][]string
+	rows, err := db.Query(q)
+	var id string
+	var title string
+	for rows.Next() {
+		rows.Scan(&id, &title)
+		a = append(a, []string{id, title})
 	}
-	fmt.Println(&result)
-
+	rows.Close()
+	return a
 }
 
 func GetDBFile() string {
