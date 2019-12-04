@@ -23,6 +23,13 @@ func TodoInit() {
 	initDB()
 }
 
+func GetDBFile() string {
+	homeDir, _ := os.UserHomeDir()
+	configDir := filepath.Join(homeDir, baseDir)
+	dbFile := configDir + string(os.PathSeparator) + dataFile
+	return dbFile
+}
+
 func initBaseDir() {
 	homeDir, _ := os.UserHomeDir()
 	configDir := filepath.Join(homeDir, baseDir)

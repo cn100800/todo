@@ -8,10 +8,7 @@ type Task struct {
 	Start       string `json:"start"`
 	End         string `json:"end"`
 	Modified    string `json:"modified"`
+	Update      string `json:update`
 	Project     string `json:"project"`
 	Status      string `json:"status"`
-}
-
-func ListTask() {
-
 }
