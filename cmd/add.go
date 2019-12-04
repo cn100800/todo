@@ -8,7 +8,7 @@ import (
 // addCmd represents the add command
 var addCmd = &cobra.Command{
 	Use:   "add",
-	Short: "A brief description of your command",
+	Short: "task add job",
 	Long:  `添加任务`,
 	Run: func(cmd *cobra.Command, args []string) {
 		task.AddTask(args)

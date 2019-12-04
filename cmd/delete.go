@@ -9,7 +9,7 @@ import (
 // deleteCmd represents the delete command
 var deleteCmd = &cobra.Command{
 	Use:   "delete",
-	Short: "A brief description of your command",
+	Short: "task delete job",
 	Long:  `删除任务`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("delete called")

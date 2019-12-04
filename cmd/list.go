@@ -8,8 +8,8 @@ import (
 // listCmd represents the list command
 var listCmd = &cobra.Command{
 	Use:   "list",
-	Short: "A brief description of your command",
-	Long:  `A longer description application.`,
+	Short: "task list",
+	Long:  `当前未完成任务`,
 	Run: func(cmd *cobra.Command, args []string) {
 		task.ListTask()
 	},

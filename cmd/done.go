@@ -8,7 +8,7 @@ import (
 // doneCmd represents the done command
 var doneCmd = &cobra.Command{
 	Use:   "done",
-	Short: "A brief description of your command",
+	Short: "task done job",
 	Long:  `完成状态`,
 	Run: func(cmd *cobra.Command, args []string) {
 		task.Done(args[0])
