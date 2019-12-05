@@ -1,16 +1,14 @@
 package task
 
-func Delete() {
-	// stmt, err = db.Prepare("delete from userinfo where uid=?")
-	// checkErr(err)
+import (
+	"log"
 
-	// res, err = stmt.Exec(id)
-	// checkErr(err)
+	"github.com/freecracy/todo/db"
+)
 
-	// affect, err = res.RowsAffected()
-	// checkErr(err)
-
-	// fmt.Println(affect)
-
-	// db.Close()
+func Delete(id string) {
+	if _, err := db.Delete("todo", map[string]string{"short_id": id}); err != nil {
+		log.Fatalln(err.Error())
+	}
+	Success("delete success !")
 }

@@ -1,8 +1,7 @@
 package cmd
 
 import (
-	"fmt"
-
+	"github.com/freecracy/todo/task"
 	"github.com/spf13/cobra"
 )
 
@@ -12,7 +11,7 @@ var deleteCmd = &cobra.Command{
 	Short: "task delete job",
 	Long:  `删除任务`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("delete called")
+		task.Delete(args[0])
 	},
 }
 

@@ -114,24 +114,40 @@ func Select(table string) [][]string {
 	return a
 }
 
-func Update(table, id string) (bool, error) {
+func Update(table string, m map[string]string, w map[string]string) (bool, error) {
+	if len(table) < 1 {
+		table = "todo"
+	}
 	db, err := sql.Open("sqlite3", GetDBFile())
 	if err != nil || db == nil {
 		log.Println(err.Error())
 	}
-	q := "update todo set where "
+	v := make([]string, 0, len(m))
+	for name, value := range m {
+		v = append(v, name+"="+value)
+	}
+	u := make([]string, 0, len(w))
+	for name, value := range w {
+		u = append(u, name+"='"+value+"'")
+	}
+	q := fmt.Sprintf("update %s set %s where %s", table, strings.Join(v, string(",")), strings.Join(u, string(",")))
+
 	if _, err := db.Exec(q); err != nil {
 		log.Println(err.Error())
 	}
 	return true, nil
 }
 
-func Delete() (bool, error) {
+func Delete(table string, w map[string]string) (bool, error) {
 	db, err := sql.Open("sqlite3", GetDBFile())
 	if err != nil || db == nil {
 		log.Println(err.Error())
 	}
-	q := "delete from todo "
+	u := make([]string, 0, len(w))
+	for name, value := range w {
+		u = append(u, name+"='"+value+"'")
+	}
+	q := fmt.Sprintf("delete from todo where %s", strings.Join(u, string(",")))
 	if _, err := db.Exec(q); err != nil {
 		log.Println(err.Error())
 	}
