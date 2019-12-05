@@ -16,7 +16,8 @@ var cfgFile string
 var rootCmd = &cobra.Command{
 	Use:   "todo",
 	Short: "A brief description of your application",
-	Long:  `简单gdt工具`,
+	Long: `简单gdt工具
+	初次使用 todo init`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },
