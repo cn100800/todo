@@ -1,8 +1,7 @@
 package cmd
 
 import (
-	"fmt"
-
+	"github.com/freecracy/todo/task"
 	"github.com/spf13/cobra"
 )
 
@@ -12,7 +11,7 @@ var allCmd = &cobra.Command{
 	Short: "task all",
 	Long:  `列出所有任务,包括未完成`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("all called")
+		task.AllTask()
 	},
 }
 

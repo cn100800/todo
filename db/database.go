@@ -93,11 +93,20 @@ func Insert(table string, m map[string]string) {
 	}
 }
 
-func Select(table string) [][]string {
+func Select(table string, w map[string]string) [][]string {
 	if len(table) == 0 {
 		table = "todo"
 	}
-	q := "select short_id,title from todo"
+	u := make([]string, 0, len(w))
+
+	q := fmt.Sprintf("select short_id,title from todo")
+	if len(w) > 0 {
+		for name, value := range w {
+			u = append(u, name+"='"+value+"'")
+		}
+		q = fmt.Sprintf(q+" where %s", strings.Join(u, string(",")))
+	}
+
 	db, err := sql.Open("sqlite3", GetDBFile())
 	if err != nil || db == nil {
 		log.Println(err.Error())

@@ -12,6 +12,7 @@ func AddTask(args []string) (bool, error) {
 		"short_id": UUID.String()[:8],
 		"uuid":     UUID.String(),
 		"title":    args[0],
+		"status":   "0",
 	}
 	db.Insert("todo", i)
 	Success("add success!")
