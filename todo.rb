@@ -1,10 +1,11 @@
 # Documentation: https://docs.brew.sh/Formula-Cookbook
 #                https://rubydoc.brew.sh/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-class Formula < Formula
+class Todo < Formula
   desc "GDT工具"
   homepage "https://github.com/freecracy/todo"
-  head "https://github.com/freecracy/todo.git"
+  head "todo"
+  url "https://github.com/freecracy/todo.git"
 
   depends_on "go" => :build
 
