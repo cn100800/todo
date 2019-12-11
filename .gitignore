@@ -4,3 +4,4 @@ release/
 vendor/
 go.sum
 todo
+dist

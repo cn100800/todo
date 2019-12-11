@@ -2,10 +2,11 @@ package task
 
 import (
 	"database/sql"
-	"log"
 	"os"
 	"path/filepath"
 
+	"github.com/apex/log"
+	"github.com/apex/log/handlers/cli"
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -38,7 +39,7 @@ func initBaseDir() {
 		os.Mkdir(configDir, 0777)
 	}
 	if _, err := os.Create(dbFile); err != nil {
-		log.Fatalln(err.Error())
+		log.Info(err.Error())
 	}
 	os.Chmod(configDir, 0744)
 	os.Chmod(dbFile, 0644)
@@ -50,7 +51,7 @@ func initDB() {
 	dbFile := configDir + string(os.PathSeparator) + dataFile
 	db, err := sql.Open("sqlite3", dbFile)
 	if err != nil || db == nil {
-		log.Println(err.Error())
+		log.Info(err.Error())
 	}
 	sql := `
 		create table IF NOT EXISTS todo (
@@ -70,7 +71,11 @@ func initDB() {
 		);
    `
 	if _, err := db.Exec(sql); err != nil {
-		log.Println(err.Error())
+		log.Info(err.Error())
 	}
-	Success(MessageSuccess)
+	log.Info("success")
+}
+
+func init() {
+	log.SetHandler(cli.Default)
 }

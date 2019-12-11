@@ -1,6 +1,7 @@
 package task
 
 import (
+	"github.com/apex/log"
 	"github.com/freecracy/todo/db"
 	"github.com/google/uuid"
 )
@@ -15,6 +16,6 @@ func AddTask(args []string) (bool, error) {
 		"status":   "0",
 	}
 	db.Insert("todo", i)
-	Success("add success!")
+	log.Info("add success!")
 	return true, nil
 }
