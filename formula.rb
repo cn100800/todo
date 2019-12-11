@@ -2,18 +2,20 @@
 #                https://rubydoc.brew.sh/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class Todo < Formula
-  desc "GDT工具"
-  homepage "https://github.com/freecracy/todo"
+  desc ""
+  homepage ""
+  head "https://github.com/freecracy/todo.git"
 
-  url  "https://github.com/freecracy/todo.git",:using => :git
-  head "https://github.com/freecracy/todo.git",:using => :git
-    #:using => :git
-  #bottle :unneeded
-  depends_on "go" => :build
+  # depends_on "cmake" => :build
 
   def install
     # ENV.deparallelize  # if your formula fails when building in parallel
-    system "go", "build", "-o", "#{bin}/#{name}"
+    # Remove unrecognized options if warned by configure
+    system "./configure", "--disable-debug",
+                          "--disable-dependency-tracking",
+                          "--disable-silent-rules",
+                          "--prefix=#{prefix}"
+    # system "cmake", ".", *std_cmake_args
   end
 
   test do
