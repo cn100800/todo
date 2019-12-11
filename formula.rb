@@ -6,16 +6,11 @@ class Todo < Formula
   homepage ""
   head "https://github.com/freecracy/todo.git"
 
-  # depends_on "cmake" => :build
+  depends_on "go" => :build
 
   def install
     # ENV.deparallelize  # if your formula fails when building in parallel
-    # Remove unrecognized options if warned by configure
-    system "./configure", "--disable-debug",
-                          "--disable-dependency-tracking",
-                          "--disable-silent-rules",
-                          "--prefix=#{prefix}"
-    # system "cmake", ".", *std_cmake_args
+    system "go", "build", "-o", "#{bin}/#{name}"
   end
 
   test do
