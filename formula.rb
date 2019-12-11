@@ -4,8 +4,11 @@
 class Todo < Formula
   desc "GDT工具"
   homepage "https://github.com/freecracy/todo"
-  head "https://github.com/freecracy/todo.git"
 
+  url  "https://github.com/freecracy/todo.git",:using => :git
+  head "https://github.com/freecracy/todo.git",:using => :git
+    #:using => :git
+  #bottle :unneeded
   depends_on "go" => :build
 
   def install
