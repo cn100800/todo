@@ -6,6 +6,7 @@ import (
 	"github.com/google/uuid"
 )
 
+// AddTask ...
 func AddTask(args []string) (bool, error) {
 	UUID, _ := uuid.NewUUID()
 

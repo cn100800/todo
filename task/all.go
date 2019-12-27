@@ -7,6 +7,7 @@ import (
 	"github.com/gosuri/uitable"
 )
 
+// AllTask ...
 func AllTask() {
 	table := uitable.New()
 	table.MaxColWidth = 50

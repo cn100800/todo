@@ -7,7 +7,7 @@ import (
 
 	"github.com/apex/log"
 	"github.com/apex/log/handlers/cli"
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/mattn/go-sqlite3" //
 )
 
 var (
@@ -16,6 +16,7 @@ var (
 )
 
 const (
+	// MessageSuccess ...
 	MessageSuccess = "init success !"
 )
 
