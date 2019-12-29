@@ -10,6 +10,10 @@
 
 ### 快速安装
 
+```sh
+curl https://raw.githubusercontent.com/freecracy/todo/master/script/install.sh | sh
+```
+
 [下载页面](https://github.com/freecracy/todo/releases)
 
     mac下载zip文件解压
